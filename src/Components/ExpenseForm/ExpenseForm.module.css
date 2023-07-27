@@ -30,6 +30,7 @@
     height: var(--input-height);
     color: white;
     border: none;
+    border-radius: 50px;
     font-size: 1.025rem;
     transition: all 0.2s ease-in-out;
   }
@@ -39,5 +40,39 @@
     background-color: white;
     color: #9c88ff;
     border: 1px solid #9c88ff;
+  }
+
+  @media (max-width: 800px) {
+    .form {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 300px;
+      transform: none;
+      margin: 5vw auto;
+      z-index: 1;
+  
+      /* Additional style for better spacing */
+      & > *:not(:last-child) {
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+
+  @media (max-width: 330px) {
+    .form {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 90%;
+      transform: none;
+      margin: 5vw auto;
+      z-index: 1;
+  
+      /* Additional style for better spacing */
+      & > *:not(:last-child) {
+        margin-bottom: 0.2rem;
+      }
+    }
   }
   

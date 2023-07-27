@@ -22,6 +22,7 @@ function App() {
   return (
     <>
     <h2 className='mainHeading'>Expense Tracker</h2>
+    <hr/>
     <div className='App'>
       <ExpenseForm addExpense={addExpense}/>
       <div className='expenseContainer'>
