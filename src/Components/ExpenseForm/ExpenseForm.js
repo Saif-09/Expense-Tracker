@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./ExpenseForm.module.css";
 
 export default function ExpenseForm({ addExpense }) {
