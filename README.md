@@ -2,7 +2,7 @@
 
 ## Screenshots
 
-![Desktop View](./src/Screenshots/Desktop%20view.png)
+![Desktop View]([./src/Screenshots/Desktop%20view.png](https://imgur.com/a/frCUOFg))
 ![Mobile View](./src/Screenshots/Mobile%20Phone%20View.png)
 
 ## Overview
