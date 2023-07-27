@@ -43,7 +43,7 @@ export default function ExpenseForm({ addExpense }) {
       />
       <div>
         <label htmlFor="expenseAmount">Amount</label>
-        <div>(negative - expense, positive - income)</div>
+        <div>(use -ve for Expense and +ve for Income)</div>
       </div>
       <input
         className={styles.input}
