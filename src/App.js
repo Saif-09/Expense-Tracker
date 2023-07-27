@@ -1,4 +1,7 @@
 import './App.css';
+import ExpenseForm from './Components/ExpenseForm/ExpenseForm';
+import ExpenseInfo from './Components/ExpenseInfo/ExpenseInfo';
+import ExpenseList from './Components/ExpenseList/ExpenseList';
 
 function App() {
   return (
