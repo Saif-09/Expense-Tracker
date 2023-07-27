@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./ExpenseList.module.css";
+import Transaction from "../Transaction/Transaction";
 
-export default function ExpenseList() {
+const ExpenseList = ({expenses, deleteExpense, changeExpenseToUpdate})=>  {
   return (
     <div className={styles.expenseListContainer}>
       <h3>Transactions</h3>
@@ -11,3 +12,5 @@ export default function ExpenseList() {
     </div>
   );
 }
+
+export default ExpenseList;

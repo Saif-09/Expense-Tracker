@@ -26,13 +26,13 @@ const ExpenseInfo = ({expenses}) =>{
         <div>
           <h4>Income</h4>
           <p id="money-plus" className={`${styles.money} ${styles.plus}`}>
-            +${/*Total Profit Amount should be displayed here */}
+            +${profitAmount}
           </p>
         </div>
         <div>
           <h4>Expense</h4>
           <p id="money-minus" className={`${styles.money} ${styles.minus}`}>
-            -${/* Total expense amount should be displayed here */}
+            -${lossAmount}
           </p>
         </div>
       </div>
