@@ -44,7 +44,7 @@ The app is built using React, taking advantage of the `useState` hook to manage 
 
 ## Screenshots
 
-![Desktop View]([./src/Screenshots/Desktop%20view.png](https://imgur.com/a/frCUOFg))
+![Desktop View](./src/Screenshots/Desktop%20view.png)
 ![Mobile View](./src/Screenshots/Mobile%20Phone%20View.png)
 
 
