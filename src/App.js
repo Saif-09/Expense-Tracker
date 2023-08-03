@@ -16,7 +16,7 @@ const reducer = (state, action)=>{
     }
     case "REMOVE_EXPENSE":{
       return {
-        expenses: state.expenses.filter((expense) => expense.id!= payload.id),
+        expenses: state.expenses.filter((expense) => expense.id !== payload.id),
       }
     }
     case "UPDATE_EXPENSE":{
@@ -36,7 +36,7 @@ const reducer = (state, action)=>{
 
 function App() {
 
-  const[state, dispatch] = useReducer(reducer, {expense:[]});
+  const[state, dispatch] = useReducer(reducer, {expenses:[]});
   const [expenseToUpdate, setExpanseToUpdate] = useState(null);
 
   const addExpense = (expense)=>{
