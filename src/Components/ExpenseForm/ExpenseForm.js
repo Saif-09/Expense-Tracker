@@ -1,11 +1,20 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./ExpenseForm.module.css";
 
-export default function ExpenseForm({ addExpense }) {
+export default function ExpenseForm({ addExpense,
+                                      expenseToUpdate,
+                                      updateExpense,
+                                      resetExpenseToUpdate
+                                    }) {
   const expenseTextInput = useRef();
   const expenseAmountInput = useRef();
 
   //Use the useEffect hook here, to check if an expense is to be updated
+  useEffect(()=>{
+    if(!expenseToUpdate) return;
+    expenseTextInput.current.value = expenseToUpdate.text;
+    expenseAmountInput.current.value= expenseToUpdate.amount;
+  },[expenseToUpdate]);
   //if yes, the autofill form value with the text and the amount of the expense
 
   const onSubmitHandler = (e) => {
@@ -15,16 +24,28 @@ export default function ExpenseForm({ addExpense }) {
     if (parseInt(expenseAmount) === 0) {
       return;
     }
+    if(!expenseToUpdate){
+      const expense = 
+      {
+        text : expenseText,
+        amount: expenseAmount,
+        id: new Date().getTime()
+      };
+      addExpense(expense);
+      clearInput();
+      return ;
+    }
 
     const expense = {
       text: expenseText,
       amount: expenseAmount,
-      id: new Date().getTime(),
+      id: expenseToUpdate.id,
     };
 
-    addExpense(expense);
+    const result = updateExpense(expense);
+    if(!result) return;
     clearInput();
-    return;
+    resetExpenseToUpdate();
 
     //Logic to update expense here
   };
@@ -37,7 +58,7 @@ export default function ExpenseForm({ addExpense }) {
   return (
     <form className={styles.form} onSubmit={onSubmitHandler}>
       {/*change the text to edit transaction if an expense is to be updated  */}
-      <h3>Add new transaction</h3>
+      <h3>{expenseToUpdate ? "Edit":"Add New"}Transaction</h3>
       <label htmlFor="expenseText">Text</label>
       <input
         id="expenseText"
@@ -61,7 +82,7 @@ export default function ExpenseForm({ addExpense }) {
       />
       <button className={styles.submitBtn}>
         {/*change the text to edit transaction if an expense is to be updated  */}
-        Add Transaction
+        {expenseToUpdate ? "Edit":"Add"} Transaction
       </button>
     </form>
   );
