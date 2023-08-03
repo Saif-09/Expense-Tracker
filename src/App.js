@@ -1,21 +1,42 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 import './App.css';
 import ExpenseForm from './Components/ExpenseForm/ExpenseForm';
 import ExpenseInfo from './Components/ExpenseInfo/ExpenseInfo';
 import ExpenseList from './Components/ExpenseList/ExpenseList';
 
+
+const reducer = (state, action)=>{
+
+  const {payload} = action;
+  switch(action.type){
+    case "ADD_EXPENSE":{
+      return {
+        expenses:[payload.expense, ...state.expenses]
+      }
+    }
+    case "REMOVE_EXPENSE":{
+      return {
+        expenses: state.expenses.filter((expense) => expense.id!= payload.id),
+      }
+    }
+    default:{
+      return state;
+    }
+  }
+
+}
+
+
 function App() {
 
-  const[expenses, setExpenses] = useState([]);
+  const[state, dispatch] = useReducer(reducer, {expense:[]});
 
   const addExpense = (expense)=>{
-    setExpenses((prevState)=>[expense, ...prevState]);
+    dispatch({type:'ADD_EXPENSE', payload:{expense}});
   };
 
   const deleteExpense=(id)=>{
-    setExpenses((prevExpenses)=>{
-      return prevExpenses.filter((expense)=>expense.id!==id);
-    })
+    dispatch({type:'REMOVE_EXPENSE', payload:{id}})
   }
 
 
@@ -26,8 +47,8 @@ function App() {
     <div className='App'>
       <ExpenseForm addExpense={addExpense}/>
       <div className='expenseContainer'>
-        <ExpenseInfo expenses={expenses}/>
-        <ExpenseList expenses={expenses} deleteExpense = {deleteExpense}/>
+        <ExpenseInfo expenses={state.expenses}/>
+        <ExpenseList expenses={state.expenses} deleteExpense = {deleteExpense}/>
       </div>
     </div>
     </>

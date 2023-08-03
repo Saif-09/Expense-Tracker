@@ -5,6 +5,9 @@ export default function ExpenseForm({ addExpense }) {
   const expenseTextInput = useRef();
   const expenseAmountInput = useRef();
 
+  //Use the useEffect hook here, to check if an expense is to be updated
+  //if yes, the autofill form value with the text and the amount of the expense
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const expenseText = expenseTextInput.current.value;
@@ -22,6 +25,8 @@ export default function ExpenseForm({ addExpense }) {
     addExpense(expense);
     clearInput();
     return;
+
+    //Logic to update expense here
   };
 
   const clearInput = () => {
@@ -31,6 +36,7 @@ export default function ExpenseForm({ addExpense }) {
 
   return (
     <form className={styles.form} onSubmit={onSubmitHandler}>
+      {/*change the text to edit transaction if an expense is to be updated  */}
       <h3>Add new transaction</h3>
       <label htmlFor="expenseText">Text</label>
       <input
@@ -53,7 +59,10 @@ export default function ExpenseForm({ addExpense }) {
         placeholder="Enter Amount..."
         required
       />
-      <button className={styles.submitBtn}>Add Transaction</button>
+      <button className={styles.submitBtn}>
+        {/*change the text to edit transaction if an expense is to be updated  */}
+        Add Transaction
+      </button>
     </form>
   );
 }
